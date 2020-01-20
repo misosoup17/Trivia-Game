@@ -1,87 +1,111 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Triva Game</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <meta charset="UTF-8">
+    <title>Trivia Game!</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
+<header>
+  <h1> Canadian Facts Edition </h1>
+  <h4> How much do you know about Canada</h4>
+</header>
+<br>
 
 <body>
-  <form name="quiz" method="post" name="buttons" id="quiz" onsubmit="return false">
-    <header id="head">
-      <div class="container">
-        <h1>basic quiz. Topic: rice</h1>
-      </div>
-    </header>
-    <div id="main-container" class="container">
-      <section class="main-section">
-        <p class="rules"> You have 50 seconds.</p>
-        <h2>
-          <button type="button" id="start-button">Start</button>
-        </h2>
-        <div id="show-number"></div>
-        <p class="question">1. when was rice first cultivated?
-        </p>
-        <ul class="answers">
-          <input type="radio" name="q1" value="a" id="q1a"><label>1000 years ago</label><br />
-          <input type="radio" name="q1" value="b" id="q1b"><label>12 years ago</label><br />
-          <input type="radio" name="q1" value="c" id="q1c"><label>1600 years ago</label><br />
-          <input type="radio" name="q1" value="correct" id="q1d"><label>14000 years ago<p class="true">true</p></label><br />
-        </ul>
-        <p class="question">2.which country is the biggest rice exporter?</p>
-        <ul class="answers">
-          <input type="radio" name="q2" value="a" id="q2a"><label>india</label><br />
-          <input type="radio" name="q2" value="correct" id="q2b"><label>china<p class="true">true</p></label><br />
-          <input type="radio" name="q2" value="c" id="q2c"><label>japan</label><br />
-          <input type="radio" name="q2" value="d" id="q2d"><label>USA</label><br />
-        </ul>
-        <p class="question">3. How many varieties of rice are there?
-        </p>
-        <ul class="answers">
-          <input type="radio" name="q3" value="correct" id="q3a"><label>40000<p class="true">true</p></label><br />
-          <input type="radio" name="q3" value="b" id="q3b"><label>1200</label><br />
-          <input type="radio" name="q3" value="c" id="q3c"><label>23</label><br />
-          <input type="radio" name="q3" value="d" id="q3d"><label>18</label><br />
-        </ul>
-        <p class="question">4. which country is know for having the best rice?</p>
-        <ul class="answers">
-          <input type="radio" name="q4" value="correct" id="q4a"><label>thailand<p class="true">true</p></label><br />
-          <input type="radio" name="q4" value="b" id="q4b"><label>vietnam</label><br />
-          <input type="radio" name="q4" value="c" id="q4c"><label>china</label><br />
-          <input type="radio" name="q4" value="d" id="q4d"><label>japan</label><br />
-        </ul>
-        <p class="question">4. what type of rice is most popular?</p>
-        <ul class="answers">
-          <input type="radio" name="q5" value="correct" id="q5a"><label>basmati<p class="true">true</p></label><br />
-          <input type="radio" name="q5" value="b" id="q5b"><label>jasmine</label><br />
-          <input type="radio" name="q5" value="c" id="q5c"><label>glutinous</label><br />
-          <input type="radio" name="q5" value="d" id="q5d"><label>brown</label><br />
-        </ul>
-
-        <button class="submit" onclick="return handleClick();" type="submit">Submit</button>
-  </form>
-  </section>
-  </div>
-  <footer id="footer" class="site-footer">
-    <div class="container">
-
+    <div id="container">
+        <div id=start>
+            <button id="play">Play!!</button>
+        </div>
+        <br>
+        <div id=timer>You have <span id="countdown">10</span> seconds!!</div>
+        <br>
+        <div id="quiz">
+            <div id="question">
+                <form>
+                    <label>What is Canada's national animal?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="beaver"> Beaver
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="moose"> Moose
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="goose"> Goose
+                    <br>
+                    <input type="radio" id="radio" name="answer1" value="polarBear"> Polar Bear
+                    <br>
+                    <br>
+                    <label>What is Canada's national sport?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="rugby"> Rugby
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="curling"> Curling
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="lacrosse"> Lacrosse
+                    <br>
+                    <input type="radio" id="radio" name="answer2" value="baseball"> Baseball
+                    <br>
+                    <br>
+                    <label>How many provinces does Canada have?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="12"> 12
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="10"> 10
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="24"> 24
+                    <br>
+                    <input type="radio" id="radio" name="answer3" value="18"> 18
+                    <br>
+                    <br>
+                    <label>Canada is considered a bilingual country. English is one language, what is the other?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="french"> French
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="spanish"> Spanish
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="portuguese"> Portuguese
+                    <br>
+                    <input type="radio" id="radio" name="answer4" value="mandarin"> Mandarin
+                    <br>
+                    <br>
+                    <label>How many oceans border Canada?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="1"> 1
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="2"> 2
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="3"> 3
+                    <br>
+                    <input type="radio" id="radio" name="answer5" value="4"> 4
+                    <br>
+                    <br>
+                    <label>The name, Canada, originates from a Saint-Lawrence Iroquoian word kanata... what does it mean in Iroquoian?</label>
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="beautful"> "Beautiful"
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="wildlife"> "Wildlife"
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="coldLand"> "Cold Land"
+                    <br>
+                    <input type="radio" id="radio" name="answer6" value="village"> "Village"
+                    <br>
+                </form>
+                <br>
+            </div>
+            <button id="done">Done, Eh?</button>
+        </div>
+        <div id=results>
+            <h1>RESULTS</h1>
+            <p>Correct: <span id=correct>0</span></p>
+            <p>Incorrect: <span id=incorrect>0</span></p>
+            <p>Missed: <span id=blank>0</span></p>
+            <button id="restart">Try Again, Eh?!</button>
+        </div>
     </div>
-    &copy; Copyright 2019
     </div>
-  </footer>
-  <!-- JavaScript File & jQuery Lib -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-  <script type="text/javascript" src="./assets/javascript/app.js">
-  </script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>
