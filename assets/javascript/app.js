@@ -1,55 +1,44 @@
-function handleClick() {
-    var amountCorrect = 0;
-    for (var i = 1; i <= 5; i++) {
-        var radios = document.getElementsByName('q' + i);
-        for (var j = 0; j < radios.length; j++) {
-            var radio = radios[j];
-            if (radio.value == "correct" && radio.checked) {
-                amountCorrect++;
+$(document).ready(function() {
+
+    //set up Global variables
+    var totalQuiz = 6,
+        answers = ["beaver", "lacrosse", "10", "french", "3", "village"],
+        data = $("input"),
+        correctAnswer = 0,
+        incorrectAnswer = 0,
+        blank = 0,
+        count = 10;
+    
+        //this is for loop selection 
+
+        function scoreCount() {
+            for (var i = 0; i < data.length; i++) {
+    
+                // If user selected an answer
+                if (data[i].checked) {
+    
+                    // check if what the user select is equal to the array answers
+    
+                    if (answers.indexOf(data[i].value) !== -1) {
+                        correctAnswer++;
+                    } else {
+                        incorrectAnswer++;
+                    }
+                }
             }
+
+            //check how many questions were blank by subtracting the if/else values from above from the total number of questions.
+
+            var totalAnswered = correctAnswer + incorrectAnswer;
+        console.log(totalAnswered);
+        if (totalAnswered !== totalQuiz) {
+            blank = totalQuiz - totalAnswered;
         }
-    }
-    alert("Correct Responses: " + amountCorrect);
-}
-$(document).ready(function () {
-    $("#start-button").click(function () {
-        var number = 50;
-        $("#start-button").on("click", start);
-        $("#submit").on("click", finish);
-        // functions
-        function start() {
-            counter = setInterval(timer, 1000);
-            showMe(".question");
-            showMe("#submit");
-            hideMe(".rules");
-            hideMe(".true");
-        }
-        function timer() {
-            number--
-            $("#show-number").html("<h2>" + number + "</h2>");
-            if (number === 0) {
-                stop();
-            }
-        }
-        function stop() {
-            clearInterval(counter);
-            $(".question").hide();
-            $(".submit").hide();
-            $(".correct").show();
-            $(".true").show();
-        }        
-        
-        function finish() {
-            number = 1;
-            clearInterval(counter);
-            timer();
-        }
-        function hideMe(e) {
-            $(e).hide();
-        }
-        function showMe(e) {
-            $(e).show();
-        }
-        start();
-    });
-})
+
+        $('#correct').html(" " + correctAnswer);
+        $('#incorrect').html(" " + incorrectAnswer);
+        $("#blank").html(" " + blank);
+
+    } //end scoreCount
+
+    
