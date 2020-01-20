@@ -41,4 +41,37 @@ $(document).ready(function() {
 
     } //end scoreCount
 
-    
+    $("#quiz, #results").hide();
+
+    $("#play").click(function() {
+        $("#start").hide("slow");
+        $("#quiz").show("slow");
+
+        //Setup timer to countdown from 60 seconds total to answer all questions\\
+
+        var startTimer = setInterval(function() {
+            count--;
+            $("#countdown").html(count);
+
+            if (count === 0) {
+                clearInterval(timer);
+                $("#quiz, #timer").hide("slow");
+                $("#results").show("slow");
+                scoreCount();
+            }
+        }, 1000);
+
+    });
+    $("#done").click(function() {
+        $("#quiz, #timer").hide("slow");
+        $("#results").show("slow");
+        clearInterval(timer);
+        scoreCount();
+    });
+
+    //restart button refreshes page back to start screen//
+
+    $("#restart").click(function() {
+        location.reload();
+    });
+});
